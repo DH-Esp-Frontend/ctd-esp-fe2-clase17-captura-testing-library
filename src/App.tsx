@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Cards from './components/Cards';
+
+export type IStatus = "offline" | "online"
+
+export interface IFriend{
+  name: string,
+  status: IStatus,
+  id: string
+}
+
+const friendList: IFriend[] = [
+  { id: "1", name: 'Phoebe', status:"offline" },
+  { id: "2", name: 'Rachel', status:"offline"},
+  { id: "3", name: 'Ross', status:"offline" },
+  { id: "4", name: 'Chandler', status:"online" },
+  { id: "5", name: 'Monica', status:"online" },
+
+];
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>Friends List</h2>
+      <Cards friends={friendList}/>
     </div>
   );
 }
