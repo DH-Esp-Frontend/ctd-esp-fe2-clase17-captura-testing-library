@@ -1,8 +1,10 @@
-import { render, screen } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
 import { IFriend } from "../../App"
 import Card from "../Card"
 
 const friend1: IFriend = {name: "Tomi", status: "online", id:"5"}
+const friend2: IFriend = {name: "Diego", status: "offline", id:"6"}
 
 
 describe("Card", ()=>{
@@ -15,6 +17,26 @@ describe("Card", ()=>{
             render(<Card id="1" data={friend1} />);
             const button = screen.getByRole("button")
             expect(button.innerHTML).toEqual(friend1.status)
+        })
+    })
+    describe("Al presionar el boton de status", ()=>{
+        describe("Si el status es online", ()=>{
+            it("deberia cambiar a offline", ()=>{
+                render(<Card id="1" data={friend1} />);
+                const button = screen.getByRole("button")
+                expect(button.innerHTML).toEqual("online")
+                userEvent.click(button)
+                expect(button.innerHTML).toEqual("offline")
+            })
+        })
+        describe("Si el status es offline", ()=>{
+            it("deberia cambiar a online", ()=>{
+                render(<Card id="1" data={friend2} />)
+                const button = screen.getByRole("button")
+                expect(button.innerHTML).toEqual("offline")
+                userEvent.click(button)
+                expect(button.innerHTML).toEqual("online")
+            })
         })
     })
 })

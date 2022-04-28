@@ -8,7 +8,7 @@ interface ICards{
 
 const Cards = ({friends}: ICards) => {
   return (
-    <div className='card-container'>
+    <div id='cards' className='card-container'>
         {friends.map(friend => <Card id={friend.id} data={friend} />)}
     </div>
   )
