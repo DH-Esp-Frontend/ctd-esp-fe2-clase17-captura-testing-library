@@ -1,4 +1,3 @@
-import React from 'react'
 import { IFriend } from '../App'
 import useStatus from './useStatus'
 import "../styles/index.css"
@@ -9,10 +8,10 @@ interface ICard  {
 }
 
 const Card = ({data}: ICard) => {
-    const [isOnline, setStatus] = useStatus(data)
-    const {name, status } = data
+    const {isOnline, setStatus} = useStatus(data)
+    const {name, status} = data
   return (
-    <div className={isOnline ? "card-online" : "card-offline"} >
+    <div data-testid="friend-card" className={isOnline ? "card-online" : "card-offline"} >
         <h2>{name}</h2>
         <li>    
           <button  onClick={()=>setStatus()}>{status}</button>

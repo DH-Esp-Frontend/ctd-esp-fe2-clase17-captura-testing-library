@@ -1,4 +1,3 @@
-import React from 'react'
 import { IFriend } from '../App'
 import Card from './Card'
 import "../styles/index.css"
