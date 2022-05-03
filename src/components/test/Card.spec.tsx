@@ -10,11 +10,11 @@ const friend2: IFriend = {name: "Diego", status: "offline", id:"6"}
 describe("Card", ()=>{
     describe("Como estado default", ()=>{
         it("Deberia renderizar un titulo con el nombre del friend",()=>{
-            render(<Card id="1" data={friend1} />);
+            render(<Card key="1" data={friend1} />);
             expect(screen.getByText(friend1.name)).toBeInTheDocument()
         })
         it("Deberia renderizar un boton con el status del friend", ()=>{
-            render(<Card id="1" data={friend1} />);
+            render(<Card key="1" data={friend1} />);
             const button = screen.getByRole("button")
             expect(button.innerHTML).toEqual(friend1.status)
         })
@@ -22,7 +22,7 @@ describe("Card", ()=>{
     describe("Al presionar el boton de status", ()=>{
         describe("Si el status es online", ()=>{
             it("deberia cambiar a offline", ()=>{
-                render(<Card id="1" data={friend1} />);
+                render(<Card key="1" data={friend1} />);
                 const button = screen.getByRole("button")
                 expect(button.innerHTML).toEqual("online")
                 userEvent.click(button)
@@ -31,7 +31,7 @@ describe("Card", ()=>{
         })
         describe("Si el status es offline", ()=>{
             it("deberia cambiar a online", ()=>{
-                render(<Card id="1" data={friend2} />)
+                render(<Card key="1" data={friend2} />)
                 const button = screen.getByRole("button")
                 expect(button.innerHTML).toEqual("offline")
                 userEvent.click(button)

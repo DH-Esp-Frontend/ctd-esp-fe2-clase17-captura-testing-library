@@ -4,7 +4,7 @@ import "../styles/index.css"
 
 interface ICard  {
     data: IFriend,
-    id: string
+    key: string
 }
 
 const Card = ({data}: ICard) => {

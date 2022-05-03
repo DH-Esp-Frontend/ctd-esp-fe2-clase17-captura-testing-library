@@ -8,8 +8,8 @@ interface ICards{
 
 const Cards = ({friends}: ICards) => {
   return (
-    <div id='cards' className='card-container'>
-        {friends.map(friend => <Card id={friend.id} data={friend} />)}
+    <div className='card-container'>
+        {friends.map(friend => <Card key={friend.id} data={friend} />)}
     </div>
   )
 }

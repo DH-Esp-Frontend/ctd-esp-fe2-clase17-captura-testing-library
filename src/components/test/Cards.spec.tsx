@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
-import { IFriend } from "../App";
-import Cards from "./Cards"
+import { IFriend } from "../../App";
+import Cards from "../Cards"
 
 
 const friendList: IFriend[] = [
@@ -11,7 +11,7 @@ const friendList: IFriend[] = [
     { id: "5", name: 'Monica', status:"online" }
   ];
 
-jest.mock('./Card', () => () => {
+jest.mock('../Card', () => () => {
     return <div>Card</div>
 });
 
